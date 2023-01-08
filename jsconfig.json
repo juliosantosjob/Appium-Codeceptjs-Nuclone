@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "allowJs": true
+  },
+
+  "helpers": {
+    "AssertWrapper" : {
+      "require": "codeceptjs-assert"
+    }
+  }
+}

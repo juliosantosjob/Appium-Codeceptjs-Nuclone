@@ -1,0 +1,15 @@
+{
+    "env": {
+        "codeceptjs/codeceptjs": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:codeceptjs/recommended"
+    ],
+    "plugins": [
+        "codeceptjs"
+    ],
+    "rules": {
+        "codeceptjs/no-actor-in-scenario": 2
+    }
+}
