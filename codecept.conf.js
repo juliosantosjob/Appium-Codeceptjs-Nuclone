@@ -16,12 +16,20 @@ exports.config = {
   gherkin: {
     features: "./src/features/**/*.feature",
     steps: "./src/features/**/stepDefinitions/*.steps.js"
-  },
+    },
   plugins: {
     allure: {
       "enabled": true
     },
-    tryTo: {
+  stepByStepReport: {
+      enabled: true, 
+      fullPageScreenshots: true, 
+      screenshotsForAllureReport: true 
+    },
+  retryFailedStep: {
+      enabled: true,
+    },
+  tryTo: {
       enabled: true
     }
   },
