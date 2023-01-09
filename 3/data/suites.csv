@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jan 09 01:00:49 GMT 2023","Mon Jan 09 01:01:28 GMT 2023","39109","","Search App:","","Search App:","Buscando um contato @search @regressive","Buscando um contato @search @regressive",""
+"passed","Mon Jan 09 00:58:45 GMT 2023","Mon Jan 09 00:59:34 GMT 2023","48543","","Home do App @homeApp @regressive","","Home do App @homeApp @regressive","Visualizando Home do app","Visualizando Home do app",""
+"passed","Mon Jan 09 00:59:35 GMT 2023","Mon Jan 09 01:00:48 GMT 2023","73893","","Saldo no aplicativo @balance @regressive","","Saldo no aplicativo @balance @regressive","Visualização de saldo","Visualização de saldo",""
