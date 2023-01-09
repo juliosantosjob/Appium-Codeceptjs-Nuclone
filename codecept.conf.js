@@ -1,4 +1,4 @@
-const env = require("./support/environment");
+const env = require("./src/support/environment");
 
 exports.config = {
   tests: './src/tests/*.spec.js',
