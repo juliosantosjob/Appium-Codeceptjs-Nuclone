@@ -1,0 +1,3 @@
+# Validando a Home do app
+# Visualização de saldo
+# Buscando um contato existente

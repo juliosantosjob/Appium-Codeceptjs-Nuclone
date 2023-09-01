@@ -15,7 +15,7 @@ module.exports = {
         I.fillField(this.fields.fldSearch, contact);
     },
 
-    async seeContact(contact) {
+    async displayedContact(contact) {
         I.waitForElement(this.fields.fldContact, 5);
         I.see(contact)
     }

@@ -2,19 +2,19 @@ const { I } = inject();
 
 module.exports = {
     fields: {
-        btnTopHeader: "~top-header",
-        txtNuConta: "~card-hero",
-        btnViewBalance: "~show-balance",
-        txtTrasfer: "//*[@text='Transferencia de R$ 5.000 recebida do Tony Stark hoje as 09:00h']",
-        txtIndicateFriends: "//*[@text='Indicar amigos']",
-        txtDemand: "//*[@text='Cobrar']",
-        txtDeposit: "//*[@text='Depositar']",
-        txtTransfer: "//*[@text='Transferir']",
-        txtPay: "//*[@text='Pagar']",
-        txtBlockCard: "//*[@text='Bloquear cartão']",
-        txtVirtualCard: "//*[@text='Bloquear cartão']",
-        txtPapito: "Papito",
-        txtNuConta: "NuConta"
+        btnTopHeader: '~top-header',
+        txtNuConta: '~card-hero',
+        btnViewBalance: '~show-balance',
+        txtTrasfer: '//*[@text="Transferencia de R$ 5.000 recebida do Tony Stark hoje as 09:00h"]',
+        txtIndicateFriends: '//*[@text="Indicar amigos"]',
+        txtDemand: '//*[@text="Cobrar"]',
+        txtDeposit: '//*[@text="Depositar"]',
+        txtTransfer: '//*[@text="Transferir"]',
+        txtPay: '//*[@text="Pagar"]',
+        txtBlockCard: '//*[@text="Bloquear cartão"]',
+        txtVirtualCard: '//*[@text="Bloquear cartão"]',
+        txtPapito: 'Papito',
+        txtNuConta: 'NuConta'
     },
 
     accessApp() {
@@ -30,8 +30,9 @@ module.exports = {
         I.waitForElement(this.fields.txtDeposit);
 
         I.performSwipe({ x: 1045, y: 1836 }, { x: 92, y: 1836 });
-
-        I.wait(2);
+        
+        
+        I.wait(5);
         I.waitForElement(this.fields.txtTransfer);
         I.waitForElement(this.fields.txtPay);
         I.waitForElement(this.fields.txtBlockCard);

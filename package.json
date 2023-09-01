@@ -1,20 +1,19 @@
 {
-  "name": "appium-codeceptjs-nuclone",
-  "version": "1.0.0",
-  "description": "e2e automation codeceptjs test",
-  "main": "index.js",
-  "scripts": {
-    "test": "npx codeceptjs run --steps --grep",
-    "report": "npx codeceptjs run --steps --plugins allure && allure serve output"
-  },
-  "keywords": [],
-  "author": "Julio Santos",
-  "license": "ISC",
-  "dependencies": {
-    "codeceptjs": "^3.3.7",
-    "codeceptjs-assert": "^0.0.5",
-    "dotenv": "^16.0.3",
-    "webdriverio": "^8.1.2"
-  }
+    "name": "appium-codeceptjs-nuclone",
+    "version": "1.0.0",
+    "description": "e2e automation codeceptjs test",
+    "main": "index.js",
+    "scripts": {
+        "test": "npx codeceptjs run --steps --grep",
+        "report": "npx codeceptjs run --steps --plugins allure && allure serve output"
+    },
+    "keywords": [],
+    "author": "Julio Santos",
+    "license": "ISC",
+    "dependencies": {
+        "codeceptjs": "^3.3.7",
+        "codeceptjs-assert": "^0.0.5",
+        "dotenv": "^16.0.3",
+        "webdriverio": "^8.1.2"
+    }
 }
-  
