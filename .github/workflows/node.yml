@@ -1,10 +1,10 @@
-name: Pipe NodeJs
+name: Pipe
 
 on:
   push:
-      branches: [ master ]
   pull_request:
-      branches: [ master ]
+    branches:
+      - 'master'
 
 jobs:
   e2e-tests:
@@ -20,6 +20,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: EsLint verify  
+        run: npx eslint src
 
       - name: Run tests
         env:

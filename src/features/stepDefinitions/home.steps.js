@@ -1,9 +1,9 @@
 const { pages } = inject();
 
 Given('que o usuario acesse o app', () => {
-    pages.app.accessApp();
+    pages.app.go();
 });
 
 Then('ele visualiza a home', async () => {
-    await pages.app.validHome();
+    pages.app.showHomeScreen();
 });

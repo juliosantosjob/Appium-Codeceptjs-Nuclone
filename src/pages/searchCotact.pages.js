@@ -1,10 +1,11 @@
 const { I } = inject();
 
 module.exports = {
+    
     fields: {
-        txtTransfer: "//*[@text='Transferir']",
-        fldSearch: "Buscar Contato",
-        fldContact: "~contacts"
+        txtTransfer: 'Transferir',
+        fldSearch: 'Buscar Contato',
+        fldContact: '~contacts'
     },
 
     tapTransfer() {
@@ -15,8 +16,8 @@ module.exports = {
         I.fillField(this.fields.fldSearch, contact);
     },
 
-    async displayedContact(contact) {
+    viewContact(contact) {
         I.waitForElement(this.fields.fldContact, 5);
-        I.see(contact)
+        I.see(contact);
     }
-}
+};

@@ -1,6 +1,6 @@
 #language:pt 
 
-  @homeApp  @regressive
+  @home  @regressive
   Funcionalidade: Home do App
   
     Cenario: Validando a Home do app

@@ -1,12 +1,13 @@
-const { I, pages } = inject();
+const { pages } = inject();
+const data = require('../support/dynamicData');
 
-Feature('Search App');
+Feature('Pesquisa no app');
 
-Scenario('Buscando um contato', async () => {
-    const contactName = 'Tony Stark'
+Scenario('Buscando um contato existente', async () => {
+    const contact = data.randomContact();
 
-    pages.app.accessApp();
+    pages.app.go();
     pages.search.tapTransfer();
-    pages.search.searchContact(contactName);
-    await pages.search.displayedContact(contactName);
+    pages.search.searchContact(contact);
+    pages.search.viewContact(contact);
 }).tag('@search').tag('@regressive');
