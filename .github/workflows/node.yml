@@ -30,7 +30,7 @@ jobs:
           BS_KEY: ${{ secrets.BS_KEY }}
           BS_HASH: ${{ secrets.BS_HASH }}
           DEVICE: ${{ secrets.DEVICE || 'Google Pixel 3' }}
-        run: npm run test @regressive
+        run: npm run grep @regressive
 
       - name: Get Allure history
         uses: actions/checkout@v2
