@@ -20,7 +20,7 @@ function getCapabilities() {
             host: 'hub-cloud.browserstack.com',
             port: 4444,
             platform: 'Android',
-            device: 'Google Pixel 3', // Galaxy S21
+            device: process.env.DEVICE, // Galaxy S21
             os_version: '9.0'
         };
     }
