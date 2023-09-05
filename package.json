@@ -8,7 +8,8 @@
         "test": "npx codeceptjs run --plugins allure --steps",
         "clean": "(if exist output (rmdir /s /q output)) && (if not exist allure-report (allure generate))",
         "history": "(if exist allure-report/history (move allure-report/history output/history))",
-        "report": "npm run clean && npx codeceptjs run --steps && npm run history"
+        "report": "npm run clean && npx codeceptjs run --steps && npm run history",
+        "lint": "npx eslint src/"
     },
     "keywords": [],
     "author": "Julio Santos",
