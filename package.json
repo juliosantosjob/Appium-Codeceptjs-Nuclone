@@ -4,7 +4,8 @@
     "description": "E2e automation codeceptjs test",
     "main": "index.js",
     "scripts": {
-        "test": "npx codeceptjs run --plugins allure --steps --grep",
+        "grep": "npx codeceptjs run --plugins allure --steps --grep",
+        "test": "npx codeceptjs run --plugins allure --steps",
         "clean": "(if exist output (rmdir /s /q output)) && (if not exist allure-report (allure generate))",
         "history": "(if exist allure-report/history (move allure-report/history output/history))",
         "report": "npm run clean && npx codeceptjs run --steps && npm run history"
@@ -13,10 +14,10 @@
     "author": "Julio Santos",
     "license": "ISC",
     "dependencies": {
-        "codeceptjs": "^3.3.7",
+        "codeceptjs": "^3.5.4",
         "codeceptjs-assert": "^0.0.5",
         "dotenv": "^16.0.3",
-        "webdriverio": "^8.1.2"
+        "webdriverio": "^8.6.3"
     },
     "devDependencies": {
         "@codeceptjs/allure-legacy": "^1.0.2",

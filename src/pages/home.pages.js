@@ -12,11 +12,11 @@ module.exports = {
         txtTrasfer: 'Transferencia de R$ 5.000 recebida do Tony Stark hoje as 09:00h',
         txtIndicateFriends: 'Indicar amigos',
         txtDemand: 'Cobrar',
-        txtDeposit: 'Depositar',
+        txtDeposit: '//*[contains(@text,"Depositar")]',
         txtTransfer: 'Transferir',
-        txtPay: 'Pagar',
+        txtPay: '//*[contains(@text,"Pagar")]',
         txtBlockCard: 'Bloquear cartão',
-        txtVirtualCard: 'Cartão virtual',
+        txtVirtualCard: '//*[contains(@text,"Cartão virtual")]',
     },
 
     go() {
@@ -24,18 +24,17 @@ module.exports = {
         I.assert(this.fields.lblTopHeader, this.fields.txtPapito);
     },
 
-    showHomeScreen() {
+    async showHomeScreen() {
         I.waitForElement(this.fields.btnShowBalance);
-        I.see(this.fields.txtIndicateFriends);
-        I.see(this.fields.txtDemand);
-        I.see(this.fields.txtDeposit);
+        I.waitForElement(this.fields.txtIndicateFriends);
+        I.waitForElement(this.fields.txtDemand);
+        I.waitForElement(this.fields.txtDeposit);
 
-        I.performSwipe({ x: 1045, y: 1836 }, { x: 92, y: 1836 });
-        // I.swipeLeft(this.fields.txtDeposit, 900, 10);
+        await I.swipeLeftScreen(this.fields.txtDeposit);
 
-        I.see(this.fields.txtTransfer);
-        I.see(this.fields.txtPay);
-        I.see(this.fields.txtBlockCard);
-        I.see(this.fields.txtVirtualCard);
+        I.waitForElement(this.fields.txtTransfer);
+        I.waitForElement(this.fields.txtPay);
+        I.waitForElement(this.fields.txtBlockCard);
+        I.waitForElement(this.fields.txtVirtualCard);
     },
 };

@@ -8,6 +8,9 @@ exports.config = {
     AssertWrapper: {
       require: 'codeceptjs-assert',
     },
+    AppiumHelper: {
+      require: "./src/support/appiumHelper"
+    }
   },
   include: {
     I: './steps_file.js',

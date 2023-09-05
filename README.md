@@ -46,8 +46,14 @@ Você pode executar os testes de automação usando o seguinte comando:
    npx codeceptjs run
    ```
 
+## Relatório de Testes
+
+O relatório de testes inclui informações detalhadas sobre os testes realizados neste projeto, incluindo casos de teste e resultados.
+<br>Para acessar o relatório acesse o [Link.](https://juliosantosjob.github.io/Appium-Codeceptjs-Nuclone/4/)
+
 ## Contato
 Para obter mais informações sobre este projeto, entre em contato com o autor:
+
 
 Nome: Julio Santos
 <br>

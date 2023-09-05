@@ -5,5 +5,5 @@ Given('que o usuario acesse o app', () => {
 });
 
 Then('ele visualiza a home', async () => {
-    pages.app.showHomeScreen();
+    await pages.app.showHomeScreen();
 });
