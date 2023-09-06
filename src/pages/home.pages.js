@@ -34,6 +34,9 @@ module.exports = {
 
         I.waitForElement(this.fields.txtTransfer);
         I.waitForElement(this.fields.txtPay);
+
+        await I.swipeLeftScreen(this.fields.txtPay);
+
         I.waitForElement(this.fields.txtBlockCard);
         I.waitForElement(this.fields.txtVirtualCard);
     },
