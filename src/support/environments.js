@@ -1,29 +1,36 @@
 require('dotenv').config();
 const { resolve } = require('path');
-const apkPath = resolve('./app/nuclone.apk');
-const local = process.env.LOCAL;
 
 function getCapabilities() {
-    let caps = {};
+    const apkPath = resolve('./app/nuclone.apk');
+    const { LOCAL, BS_HASH, BS_USER, BS_KEY, DEVICE } = process.env;
+    let caps;
 
-    if (local === 'appium') {
-        caps = {
-            app: apkPath,
-            platform: 'Android',
-            device: 'emulator'
-        };
-    } else if (!local || local === 'bs') {
-        caps = {
-            app: `bs://${process.env.BS_HASH}`,
-            user: process.env.BS_USER,
-            key: process.env.BS_KEY,
-            host: 'hub-cloud.browserstack.com',
-            port: 4444,
-            platform: 'Android',
-            device: process.env.DEVICE, // Galaxy S21
-            os_version: '9.0'
-        };
+    const capsAppium = {
+        app: apkPath,
+        platform: 'Android',
+        device: 'emulator'
+    };
+
+    const capsBrowserStack = {
+        app: `bs://${BS_HASH}`,
+        user: BS_USER,
+        key: BS_KEY,
+        host: 'hub-cloud.browserstack.com',
+        port: 4444,
+        platform: 'Android',
+        device: DEVICE,
+        os_version: '9.0'
+    };
+
+    if (LOCAL === 'appium') {
+        caps = capsAppium;
+    } else if (!LOCAL || LOCAL === 'bs') {
+        caps = capsBrowserStack;
+    } else {
+        throw new Error('Invalid given argument!');
     }
+
     return caps;
 }
 
