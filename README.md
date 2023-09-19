@@ -52,7 +52,7 @@ Antes de começar, certifique-se de ter os seguintes requisitos instalados em se
 
 6. Crie um arquivo '.env' na raiz do projeto onde você deverá informar onde quer rodar os testes, pode seguir o arquivo base .env.example
 
-7. Baixe o app nuclone [aqui.](https://github.com/papitorcks/nuclone-appium-robot/tree/master), depois crie a pasta 'app' no diretorio raiz do projeto, adicione o apk baixado nesta pasta.
+7. Baixe o app nuclone [aqui](https://github.com/papitorcks/nuclone-appium-robot/tree/master), depois crie a pasta 'app' no diretorio raiz do projeto, adicione o apk baixado nesta pasta.
 
 
 ## Executando Testes
