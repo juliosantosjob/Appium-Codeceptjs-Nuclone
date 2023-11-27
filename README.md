@@ -1,6 +1,6 @@
 # Appium-Codeceptjs-Nuclone
 
-Este repositório contém um exemplo de projeto de automação de teste usando Appium e CodeceptJS para clonar a interface de usuário do aplicativo Nuclon.
+Este repositório contém um exemplo de automação de teste utilizado Appium e CodeceptJS interagindo com o aplicativo Nuclone.
 
 ## Pré-requisitos
 
@@ -11,7 +11,7 @@ Antes de começar, certifique-se de ter os seguintes requisitos instalados em se
 - [Android Studio](https://developer.android.com/studio) (para configuração de emulador Android) ou um dispositivo Android físico conectado
 - [CodeceptJS](https://codecept.io/) (framework de automação de teste)
 
-## Configuração
+## Configurações
 
 1. Clone este repositório em seu sistema local:
 
@@ -50,12 +50,12 @@ Antes de começar, certifique-se de ter os seguintes requisitos instalados em se
 
 5. Baixe e instale o Android Studio para conseguir emular o device onde os testes serão executados, caso não saiba como fazer siga este  [turorial](https://react-native.rocketseat.dev/android/emulador/).
 
-6. Crie um arquivo '.env' na raiz do projeto onde você deverá informar onde quer rodar os testes, pode seguir o arquivo base .env.example
+6. Crie um arquivo '.env' na raiz do projeto onde você deverá informar onde quer rodar os testes, pode seguir o arquivo base ".env.example".
 
 7. Baixe o app nuclone [aqui](https://github.com/papitorcks/nuclone-appium-robot/tree/master), depois crie a pasta 'app' no diretorio raiz do projeto, adicione o apk baixado nesta pasta.
 
 
-## Executando Testes
+## Execução
 
 Você pode executar os testes usando o seguinte comando:
 
@@ -63,14 +63,12 @@ Você pode executar os testes usando o seguinte comando:
    npm run test
    ```
 
-## Relatório de Testes
+## Relatórios
 
-O relatório de testes inclui informações detalhadas sobre os testes realizados neste projeto.
-<br>Para acessar o relatório da ultima execução acesse o [Link.](https://juliosantosjob.github.io/Appium-Codeceptjs-Nuclone).
+O relatório de testes inclui informações detalhadas sobre os testes realizados neste projeto. Para acessar o relatório da ultima execução acesse este [link](https://juliosantosjob.github.io/Appium-Codeceptjs-Nuclone).
 
-## Contato
-Para obter mais informações sobre este projeto, entre em contato comigo pelo email a baixo Tmj. 😉
-
+## Contatos
+No caso duvidas sobre este projeto, entre em contato comigo pelo email a baixo Tmj. 😉
 
 Nome: Julio Santos
 <br>
