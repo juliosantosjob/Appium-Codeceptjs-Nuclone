@@ -68,7 +68,7 @@ Você pode executar os testes usando o seguinte comando:
 O relatório de testes inclui informações detalhadas sobre os testes realizados neste projeto. Para acessar o relatório da ultima execução acesse este [link](https://juliosantosjob.github.io/Appium-Codeceptjs-Nuclone).
 
 ## Contatos
-No caso duvidas sobre este projeto, entre em contato comigo pelo email a baixo We're together. 😉
+No caso duvidas sobre este projeto, entre em contato comigo pelo email a baixo TMJ. 😉
 
 Nome: Julio Santos
 <br>
