@@ -11,52 +11,61 @@ module.exports = function () {
             this.assertOk(assertion.includes(text));
         },
 
-
         doASwipe: async function (params = {}) {
             let from = params.from,
                 direction = params.direction,
                 locatorTwo = params.locatorTwo || null;
 
-            let x_, y_, x, y;
-
             if ('from' in params)
                 from = await this.grabElementBoundingRect(from);
 
-            x = parseInt(from['x']) + parseInt(from['width']) / 2;
-            y = parseInt(from['y']) + parseInt(from['height']) / 2;
+            async function init(from) {
+                return {
+                    x: parseInt(from['x']) + parseInt(from['width']) / 2,
+                    y: parseInt(from['y']) + parseInt(from['height']) / 2
+                }
+            }
 
+            this.performSwipe(await init(from), await this.getOptions(direction, from))      
+        },
 
+        async getOptions(direction, from) {
             switch (direction) {
                 case 'to':
-                    x_ = parseInt(from['x']) + parseInt(from['width']) / 2;
-                    y_ = parseInt(from['y']) + parseInt(from['height']) / 2;
-                    break;
-
+                    return {
+                        x: parseInt(from['x']) + parseInt(from['width']) / 2,
+                        y: parseInt(from['y']) + parseInt(from['height']) / 2
+                    };
+        
                 case 'screenUp':
-                    x_ = parseInt(from['x']) + parseInt(from['width']) / 2;
-                    y_ = await this.getScreenSize().height;
-                    break;
-
+                    const screenSizeUp = await this.getScreenSize();
+                    return {
+                        x: parseInt(from['x']) + parseInt(from['width']) / 2,
+                        y: screenSizeUp.height
+                    };
+        
                 case 'screenDown':
-                    x_ = parseInt(from['x']) + parseInt(from['width']) / 2;
-                    y_ = 0;
-                    break;
-
+                    return {
+                        x: parseInt(from['x']) + parseInt(from['width']) / 2,
+                        y: 0
+                    };
+        
                 case 'screenLeft':
-                    x_ = 0;
-                    y_ = parseInt(from['y']) + parseInt(from['height']) / 2;
-                    break;
-
+                    return {
+                        x: 0,
+                        y: parseInt(from['y']) + parseInt(from['height']) / 2
+                    };
+        
                 case 'screenRight':
-                    x_ = await this.getScreenSize().width;
-                    y_ = parseInt(from['y']) + parseInt(from['height']) / 2;
-                    break;
-
+                    const screenSizeRight = await this.getScreenSize();
+                    return {
+                        x: screenSizeRight.width,
+                        y: parseInt(from['y']) + parseInt(from['height']) / 2
+                    };
+        
                 default:
                     throw new Error(`'${direction}' direction argument is invalid. Use one of the following arguments: ["to", "screenUp", "screenDown", "screenLeft", "screenRight"].`);
             }
-
-            this.performSwipe({ x: x, y: y }, { x: x_, y: y });
-        }
+        }        
     });
 };
