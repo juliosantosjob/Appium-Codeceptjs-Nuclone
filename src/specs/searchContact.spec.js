@@ -10,4 +10,4 @@ Scenario('Buscando um contato existente', async () => {
     pages.search.tapTransfer();
     pages.search.searchContact(contact);
     pages.search.viewContact(contact);
-}).tag('@search').tag('@regressive');
+}).tag('@search').tag('@regression');

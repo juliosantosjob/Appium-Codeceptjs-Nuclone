@@ -1,6 +1,6 @@
 #language:pt
 
-  @balance @regressive
+  @balance @regression
   Funcionalidade: Visualização de saldo
   - Eu como usuário devo poder visualizar meu saldo no aplicativo Nuclone.
 

@@ -4,8 +4,9 @@
     "description": "E2e automation codeceptjs test",
     "main": "index.js",
     "scripts": {
-        "grep": "npx codeceptjs run --plugins allure --steps --grep",
-        "test": "npx codeceptjs run --plugins allure --steps",
+        "grep": "cross-env LOCAL=appium PLATFORM=android npx codeceptjs run --plugins allure --steps --grep",
+        "test": "cross-env LOCAL=appium PLATFORM=android npx codeceptjs run --plugins allure --steps",
+        "test_cloud": "cross-env LOCAL=bs PLATFORM=android npx codeceptjs run --steps --grep",
         "clean": "(if exist output (rmdir /s /q output)) && (if not exist allure-report (allure generate))",
         "history": "(if exist allure-report/history (move allure-report/history output/history))",
         "report": "npm run clean && npx codeceptjs run --steps && npm run history",
@@ -17,6 +18,7 @@
     "dependencies": {
         "codeceptjs": "^3.5.4",
         "codeceptjs-assert": "^0.0.5",
+        "cross-env": "^7.0.3",
         "dotenv": "^16.0.3",
         "webdriverio": "^8.6.3"
     },
