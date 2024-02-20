@@ -54,10 +54,9 @@ module.exports = function () {
                     };
 
                 case 'screenUp':
-                    const screenSizeUp = await this.getScreenSize();
                     return {
                         x: parseInt(from['x']) + parseInt(from['width']) / 2,
-                        y: screenSizeUp.height
+                        y: await this.getScreenSize().height
                     };
 
                 case 'screenDown':
