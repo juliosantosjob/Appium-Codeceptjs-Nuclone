@@ -35,7 +35,7 @@ module.exports = function () {
             )
         },
 
-        async getOptions(from, directio) {
+        async getOptions(from, direction) {
             switch (direction) {
                 case 'to':
                     return {
