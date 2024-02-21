@@ -30,16 +30,9 @@ module.exports = function () {
             }
             
             this.performSwipe(
-                await this.init(from),
+                await this.getOptions(from, 'to'),
                 await this.getOptions(from, direction)
             )
-        },
-
-        async init(from) {
-            return {
-                x: parseInt(from['x']) + parseInt(from['width']) / 2,
-                y: parseInt(from['y']) + parseInt(from['height']) / 2
-            }
         },
 
         async getOptions(from, directio) {
