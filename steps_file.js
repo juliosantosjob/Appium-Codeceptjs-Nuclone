@@ -31,7 +31,7 @@ module.exports = function () {
             
             this.performSwipe(
                 await this.init(from),
-                await this.getOptions(direction, from)
+                await this.getOptions(from, direction)
             )
         },
 
@@ -42,7 +42,7 @@ module.exports = function () {
             }
         },
 
-        async getOptions(direction, from) {
+        async getOptions(from, directio) {
             switch (direction) {
                 case 'to':
                     return {
