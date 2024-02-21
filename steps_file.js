@@ -15,6 +15,7 @@ module.exports = function () {
             let from,
                 until,
                 direction;
+            
             if ('from' in params) 
                 from = await this.grabElementBoundingRect(params["from"]);
             else
@@ -22,11 +23,12 @@ module.exports = function () {
             if ('until' in params) until = await this.grabElementBoundingRect(params["until"]);
             if ('direction' in params) direction = params["direction"];
                 
-            if (typeof direction !== 'string') 
-              throw new Error('The "direction" argument must be a string');
-            else 
-              throw new Error('The "Direction" argument is required to use doASwipe!');
-
+            if (typeof direction !== 'string') {
+              throw new Error('The "direction" argument must be a string'); 
+            } else {
+              throw new Error('The "direction" argument is required to use doASwipe!');
+            }
+            
             this.performSwipe(
                 await this.init(from),
                 await this.getOptions(direction, from)
