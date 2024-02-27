@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Tue Feb 27 14:28:33 GMT 2024","Tue Feb 27 14:28:34 GMT 2024","476","","Visualização de saldo @balance @regression","","Visualização de saldo @balance @regression","Visualização saldo no app","Visualização saldo no app",""
+"failed","Tue Feb 27 14:28:32 GMT 2024","Tue Feb 27 14:28:33 GMT 2024","1152","","Home do App @home @regression","","Home do App @home @regression","Validando a Home do app","Validando a Home do app",""
+"failed","Tue Feb 27 14:28:34 GMT 2024","Tue Feb 27 14:28:34 GMT 2024","421","","Pesquisa no app:","","Pesquisa no app:","Buscando um contato existente @search @regression","Buscando um contato existente @search @regression",""
