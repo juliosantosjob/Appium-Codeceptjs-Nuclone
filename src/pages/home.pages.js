@@ -30,13 +30,10 @@ module.exports = {
         I.waitForElement(this.fields.txtDemand);
         I.waitForElement(this.fields.txtDeposit);
         
-        await I.doASwipe({ from: this.fields.txtDeposit, direction: 'screenLeft' });
+        await I.doASwipe({ from: this.fields.txtDeposit, direction: 'elementright -> screenleft' });
 
         I.waitForElement(this.fields.txtTransfer);
         I.waitForElement(this.fields.txtPay);
-
-        await I.doASwipe({ from: this.fields.txtPay, direction: 'screenLeft' });
-
         I.waitForElement(this.fields.txtBlockCard);
         I.waitForElement(this.fields.txtVirtualCard);
     },

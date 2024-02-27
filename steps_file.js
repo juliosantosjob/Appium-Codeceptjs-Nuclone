@@ -1,6 +1,6 @@
 module.exports = function () {
+    let screenSize;
     return actor({
-
         waitAndTap: function (locator, timeout = 5) {
             this.waitForElement(locator, timeout);
             this.tap(locator);
@@ -11,74 +11,122 @@ module.exports = function () {
             this.assertOk(assertion.includes(text));
         },
 
-        doASwipe: async function (params = {}) {
-            let from,
-                until,
-                direction;
-
-            if ('from' in params) {
+        async doASwipe(params = {}) {
+            let
+                from,
+                to,
+                direction = "elementCenter -> screenCenter";
+            if (params.hasOwnProperty("from"))
                 from = await this.grabElementBoundingRect(params["from"]);
-            } else {
-                throw new Error('The "From" argument is required to use doASwipe!');
-            }
-
-            if ('until' in params) until = await this.grabElementBoundingRect(params["until"]);
-
-
-            if ('direction' in params) {
+            else
+                throw new Error("[doASwipe] param 'from' are required");
+            if (params.hasOwnProperty("to")) to = await this.grabElementBoundingRect(params["to"]);
+            if (params.hasOwnProperty("direction")) {
                 direction = params["direction"];
-                if (typeof direction !== 'string') throw new Error('The "direction" argument must be a string');
+                if (typeof direction != "string") 
+                    throw new Error("[doASwipe] param 'direction' need to be a string");
+            }
+
+            if (to == undefined) { 
+                if (direction.includes("->")) {
+                    let dirs = direction.split("->");
+                    return this.performSwipe(
+                        await this.getOptions(from, dirs[0]), 
+                        await this.getOptions(from, dirs[1]));
+                } else
+                    return this.performSwipe(
+                        await this.getOptions(from, "elementCenter"), 
+                        await this.getOptions(from, direction));
             } else {
-                throw new Error('The "Direction" argument is required to use doASwipe!');
-            }
-
-            this.performSwipe(
-                await this.init(from),
-                await this.getOptions(direction, from)
-            )
-        },
-
-        async init(from) {
-            return {
-                x: parseInt(from['x']) + parseInt(from['width']) / 2,
-                y: parseInt(from['y']) + parseInt(from['height']) / 2
+                if (direction.includes("->")) {
+                    let dirs = direction.split("->");
+                    return this.touchPerform(
+                        await this.getOptions(from, dirs[0]), 
+                        await this.getOptions(undefined, dirs[1]));
+                } else
+                    return this.touchPerform(
+                        await this.getOptions(from, direction), 
+                        await this.getOptions(to, direction));
             }
         },
 
-        async getOptions(direction, from) {
-            switch (direction) {
-                case 'to':
-                    return {
-                        x: parseInt(from['x']) + parseInt(from['width']) / 2,
-                        y: parseInt(from['y']) + parseInt(from['height']) / 2
-                    };
-
-                case 'screenUp':
-                    return {
-                        x: parseInt(from['x']) + parseInt(from['width']) / 2,
-                        y: await this.getScreenSize().height
-                    };
-
-                case 'screenDown':
-                    return {
-                        x: parseInt(from['x']) + parseInt(from['width']) / 2,
-                        y: 0
-                    };
-
-                case 'screenLeft':
-                    return {
-                        x: 0,
-                        y: parseInt(from['y']) + parseInt(from['height']) / 2
-                    };
-
-                case 'screenRight':
-                    return {
-                        x: await this.getScreenSize().width,
-                        y: parseInt(from['y']) + parseInt(from['height']) / 2
-                    };
-
-                default:
-                    throw new Error(`'${direction}' direction argument is invalid. Use one of the following arguments: ["to", "screenUp", "screenDown", "screenLeft", "screenRight"].`);
+        async getOptions(elementBoundies, strategy) {
+            if (screenSize == undefined) 
+                screenSize = await this.getScreenSize();
+            switch (strategy.trim().toLowerCase()) {
+            case "elementcenter":
+                return {
+                    x: parseInt(elementBoundies["x"]) + parseInt(elementBoundies["width"]) / 2,
+                    y: parseInt(elementBoundies["y"]) + parseInt(elementBoundies["height"]) / 2
+                };
+            case "elementleft":
+                return {
+                    x: parseInt(elementBoundies["x"]),
+                    y: parseInt(elementBoundies["y"]) + parseInt(elementBoundies["height"]) / 2
+                };
+            case "elementright":
+                return {
+                    x: parseInt(elementBoundies["x"]) + parseInt(elementBoundies["width"]),
+                    y: parseInt(elementBoundies["y"]) + parseInt(elementBoundies["height"]) / 2
+                };
+            case "elementtop":
+                return {
+                    x: parseInt(elementBoundies["x"]) + parseInt(elementBoundies["width"]) / 2,
+                    y: parseInt(elementBoundies["y"])
+                };
+            case "elementbottom":
+                return {
+                    x: parseInt(elementBoundies["x"]) + parseInt(elementBoundies["width"]) / 2,
+                    y: parseInt(elementBoundies["y"]) + parseInt(elementBoundies["height"])
+                };
+            case "screencenter":
+                return {
+                    x: screenSize.width / 2,
+                    y: screenSize.height / 2
+                };
+            case "screenleft":
+                return {
+                    x: 0,
+                    y: screenSize.height / 2
+                };
+            case "screenright":
+                return {
+                    x: screenSize.width,
+                    y: screenSize.height / 2
+                };
+            case "screentop":
+                return {
+                    x: screenSize.width / 2,
+                    y: 0
+                };
+            case "screenbottom":
+                return {
+                    x: screenSize.width / 2,
+                    y: screenSize.height
+                };
+            case "left":
+                return {
+                    x: 0,
+                    y: parseInt(elementBoundies["y"]) + parseInt(elementBoundies["height"]) / 2
+                };
+            case "right":
+                return {
+                    x: screenSize.width,
+                    y: parseInt(elementBoundies["y"]) + parseInt(elementBoundies["height"]) / 2
+                };
+            case "top":
+                return {
+                    x: parseInt(elementBoundies["x"]) + parseInt(elementBoundies["width"]) / 2,
+                    y: 0
+                };
+            case "bottom":
+                return {
+                    x: parseInt(elementBoundies["x"]) + parseInt(elementBoundies["width"]) / 2,
+                    y: screenSize.height
+                };
+            default:
+                throw new Error(
+                    `[doASwipe] direction "${strategy}" are not recognized.`);
             }
         }
     });
