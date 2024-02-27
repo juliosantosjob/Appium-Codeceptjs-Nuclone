@@ -15,7 +15,7 @@ module.exports = function () {
             let
                 from,
                 to,
-                direction = "elementCenter -> screenCenter";
+                direction = "elementCenter -> scsreenCenter";
             if (params.hasOwnProperty("from"))
                 from = await this.grabElementBoundingRect(params["from"]);
             else
@@ -125,8 +125,7 @@ module.exports = function () {
                     y: screenSize.height
                 };
             default:
-                throw new Error(
-                    `[doASwipe] direction "${strategy}" are not recognized.`);
+                throw new Error(`[doASwipe] direction "${strategy}" are not recognized.`);
             }
         }
     });
