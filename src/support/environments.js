@@ -3,54 +3,57 @@ const { resolve } = require('path');
 
 function getCapabilities() {
     const apkPath = resolve('./app/nuclone.apk');
-    const { LOCAL, PLATFORM, BS_HASH, BS_USER, BS_KEY, DEVICE } = process.env;
+    let { CLOUD, PLATFORM } = process.env;
+    const { BS_HASH, BS_USER, BS_KEY, DEVICE_NAME } = process.env;
 
-    if (LOCAL === 'appium') {
-        if (PLATFORM === 'android') {
-            return {
-                app: apkPath,
-                platform: 'Android',
-                device: 'emulator'
-            };
-        } else if (PLATFORM === 'ios') {
-            return {
-                app: "appPath",
-                platformName: 'iOS',
-                deviceName: 'iPhone Simulator',
-                automationName: 'XCUITest'
-            };
-        } else {
-            throw new Error(`The platform [${PLATFORM}] is incorrect. It should be "android" or "ios"`);
+    CLOUD = CLOUD.toLowerCase();
+    PLATFORM = PLATFORM.toLowerCase();
+
+    const appiumCapabilities = {
+        android: {
+            app: apkPath,
+            platform: 'Android',
+            device: 'emulator'
+        },
+        ios: {
+            app: "appPath",
+            platformName: 'iOS',
+            deviceName: 'iPhone Simulator',
+            automationName: 'XCUITest'
         }
-    } else if (LOCAL === 'bs') {
-        if (PLATFORM === 'android') {
-            return {
-                app: `bs://${BS_HASH}`,
-                user: BS_USER,
-                key: BS_KEY,
-                host: 'hub-cloud.browserstack.com',
-                port: 4444,
-                platform: 'Android',
-                device: DEVICE,
-                os_version: '9.0'
-            };
-        } else if (PLATFORM === 'ios') {
-            return {
-                app: `bs://${BS_HASH}`,
-                user: BS_USER,
-                key: BS_KEY,
-                host: 'hub-cloud.browserstack.com',
-                port: 4444,
-                platform: 'iOS',
-                device: DEVICE,
-                os_version: '14.0'
-            };
-        } else {
-            throw new Error(`The platform [${PLATFORM}] is incorrect. It should be "android" or "ios"`);
+    };
+
+    const browserstackCapabilities = {
+        android: {
+            app: `bs://${BS_HASH}`,
+            user: BS_USER,
+            key: BS_KEY,
+            host: 'hub-cloud.browserstack.com',
+            port: 4444,
+            platform: 'Android',
+            device: DEVICE_NAME,
+            os_version: '9.0'
+        },
+        ios: {
+            app: `bs://${BS_HASH}`,
+            user: BS_USER,
+            key: BS_KEY,
+            host: 'hub-cloud.browserstack.com',
+            port: 4444,
+            platform: 'iOS',
+            device: DEVICE_NAME,
+            os_version: '14.0'
         }
-    } else {
-        throw new Error(`The argument [${LOCAL}] is incorrect. It should be "appium" or "bs"`);
-    }
+    };
+
+    if (CLOUD === undefined)
+        return appiumCapabilities[PLATFORM];
+    else if (CLOUD === 'false')
+        return appiumCapabilities[PLATFORM];
+    else if (CLOUD === 'true')
+        return browserstackCapabilities[PLATFORM];
+    else
+        throw new Error(`Invalid CLOUD value: ${CLOUD}. Expected "true" or "false"!`);
 }
 
 module.exports = {
